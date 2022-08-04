@@ -4,6 +4,9 @@ from controller import *;
 
 app = FastAPI()
 
+
+
+#! PUT запрос лучше
 @app.post('/user/', response_model=User)
 async def create_user(user: User):
     name = user.name;
@@ -14,3 +17,11 @@ async def create_user(user: User):
 @app.get('/user/')
 async def get_users():
     return getUsers();
+
+@app.post('/user/{user_id}')
+async def user(user_id: str):
+    return getUser(user_id);
+
+@app.post('/room/', response_model=Room)
+async def create_room(room: Room):
+    ...
